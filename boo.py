@@ -10,9 +10,8 @@ import re
 
 ytm = YTMusic()
 client = Client()
-TOKEN = cred.TOKEN
-bot = telebot.TeleBot(TOKEN)
-sp = spotipy.Spotify(auth_manager=SpotifyClientCredentials(client_id=cred.client_id, client_secret=cred.client_secret))
+bot = telebot.TeleBot("YOUR TOKEN")
+sp = spotipy.Spotify(auth_manager=SpotifyClientCredentials(client_id="YOUR ID", client_secret="YOUR SECRET"))
 
 
 # spoty
