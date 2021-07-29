@@ -1,0 +1,5 @@
+telebot
+pyTelegramBotAPI==3.7.8
+spotipy==2.18.0
+yandex_music
+ytmusicapi
