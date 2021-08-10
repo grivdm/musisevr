@@ -3,7 +3,7 @@ from boo import get_output
 import telebot
 import cred
 
-bot = telebot.TeleBot(cred.TOKEN)
+bot = telebot.TeleBot(TELEGRAM BOT TOKEN)
 
 
 @bot.message_handler(commands=['start'])
