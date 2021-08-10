@@ -1,1 +1,1 @@
-bot: python boo.py
+bot: python tg_bot.py

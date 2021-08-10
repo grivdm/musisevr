@@ -1,4 +1,3 @@
-import telebot
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
 import sys
@@ -10,16 +9,14 @@ import re
 
 ytm = YTMusic()
 client = Client()
-TOKEN = cred.TOKEN
-bot = telebot.TeleBot(TOKEN)
 sp = spotipy.Spotify(auth_manager=SpotifyClientCredentials(client_id=cred.client_id, client_secret=cred.client_secret))
 
 
-# spoty
+# Input
 
 def get_input(textSearch):
-    if re.match(r'http', textSearch):
-        if re.search(r'spotify', textSearch):
+    if re.match(r'http', textSearch):                    #Link part
+        if re.search(r'spotify', textSearch):            #Spoti part
             if re.search(r'artist', textSearch):
                 res_art = sp.artist(textSearch)
                 artistNm1 = res_art['name']
@@ -37,7 +34,7 @@ def get_input(textSearch):
                     trackNm1 = results['name']
             return artistNm1, trackNm1
 
-        elif re.search(r'yandex', textSearch):
+        elif re.search(r'yandex', textSearch):            #Yandex part
             if re.search(r'artist', textSearch):
                 ids = re.findall(r'[0-9]+', textSearch)
                 idartist = ids[0]
@@ -57,7 +54,7 @@ def get_input(textSearch):
                     res_track = search_result[0]['title']
                 return res_art, res_track
     else:
-        if len(textSearch) > 0:
+        if len(textSearch) > 0:                       #Text part
             inreq = textSearch.split('-')
             artistNm1 = inreq[0]
             if len(inreq) >= 2:
@@ -66,8 +63,9 @@ def get_input(textSearch):
                 trackNm1 = None
             return artistNm1, trackNm1
         else:
-            print('none')
+            pass
 
+#Spotify
 
 def get_trackSpoty(artist, track):
     if len(sys.argv) > 1:
@@ -119,6 +117,7 @@ def ytMus(artist, track):
     except:
         return None
 
+#Output
 
 def get_output(text):
     artist, track = get_input(text)
@@ -128,34 +127,3 @@ def get_output(text):
     out_ytm = ytMus(artist, track)
     return out_S, out_Y, out_ytm
 
-
-# telegram
-
-@bot.message_handler(commands=['start'])
-def welcome_start(message):
-    bot.send_message(message.chat.id, 'Приветствую тебя, {username}. \n'
-                                      '\nТут всё просто, напиши в чате:'
-                                      '\nИмя исполнителя - Название песни '
-                                      '\nили \nИмя исполнителя.'
-                                      '\nМожешь скинуть ссылку на исполнителя или песню.'
-                                      '\nРаботаю с сервисами  Spotify & YaMusic. '
-                                      '\nВперед!'.format(username=message.from_user.first_name))
-
-
-@bot.message_handler(content_types=["text"])
-def get_msg(message):
-    spotyRep, yandRep, ytmRep = get_output(message.text)
-    markup = telebot.types.InlineKeyboardMarkup()
-    try:
-        if spotyRep is not None:
-            markup.add(telebot.types.InlineKeyboardButton(text='spotify', url=spotyRep['urls']['spotify']))
-        if yandRep is not None:
-            markup.add(telebot.types.InlineKeyboardButton(text='yandex', url=yandRep))
-        bot.send_message(message.chat.id, 'Смотри, что удалось найти: \n' + ytmRep, reply_markup=markup)
-    except:
-        bot.send_message(message.chat.id, 'К сожалению, ничего не найдено.'
-                                          '\nПопробуй ещё раз или почитай /start')
-
-
-if __name__ == '__main__':
-    bot.infinity_polling()
