@@ -22,4 +22,7 @@ Bot uses:
    [yandex-music-api]: <https://github.com/MarshalX/yandex-music-api>
    [vk]: <https://vk.com/g_i_d>
    [telegram]: <https://t.me/mrG_I_D>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 805437b08af107c702aa047c5d59045afae99ad8
