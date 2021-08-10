@@ -1,7 +1,6 @@
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
 import sys
-import cred
 import ast
 from yandex_music import Client
 from ytmusicapi import YTMusic
@@ -9,7 +8,7 @@ import re
 
 ytm = YTMusic()
 client = Client()
-sp = spotipy.Spotify(auth_manager=SpotifyClientCredentials(client_id=cred.client_id, client_secret=cred.client_secret))
+sp = spotipy.Spotify(auth_manager=SpotifyClientCredentials(client_id=SPOTIFY CLIENT ID, client_secret=SPOTIFY CLIENT SECRET))
 
 
 # Input
