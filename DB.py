@@ -1,7 +1,7 @@
 import sqlite3
 
 
-def db_table_val(user_id: int, user_lng: int):
+def db_insert_user(user_id: int, user_lng: int):
     con = sqlite3.connect('bot_db', check_same_thread=False)
     cursor = con.cursor()
     try:
@@ -13,7 +13,7 @@ def db_table_val(user_id: int, user_lng: int):
     con.close()
 
 
-def db_table_upd(user_id: int, user_lng: int):
+def db_update_user(user_id: int, user_lng: int):
     con = sqlite3.connect('bot_db', check_same_thread=False)
     cursor = con.cursor()
     cursor.execute(f'UPDATE bot_db SET user_lng = {user_lng} WHERE user_id = {user_id}')
@@ -22,7 +22,7 @@ def db_table_upd(user_id: int, user_lng: int):
     con.close()
 
 
-def db_select(user_id: int):
+def db_select_language(user_id: int):
     con = sqlite3.connect('bot_db', check_same_thread=False)
     cursor = con.cursor()
     cursor.execute(f'SELECT user_lng FROM bot_db WHERE user_id = {user_id}')
