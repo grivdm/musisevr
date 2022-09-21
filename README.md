@@ -15,10 +15,9 @@ Bot uses:
 
 ##### It is my first project so if you wanna help me, you are welcome! 
 
-##### My contacts: [vk],  [telegram].
+##### My contacts: [telegram].
  
    [ytmusicapi]: <https://github.com/sigma67/ytmusicapi>
    [spotipy]: <https://github.com/plamere/spotipy>
    [yandex-music-api]: <https://github.com/MarshalX/yandex-music-api>
-   [vk]: <https://vk.com/g_i_d>
    [telegram]: <https://t.me/mrG_I_D>
